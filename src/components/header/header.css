@@ -1,0 +1,15 @@
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    align-items: center;
+}
