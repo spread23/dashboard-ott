@@ -1,0 +1,20 @@
+.container-general {
+    width: 100%;
+}
+
+.title-general {
+    width: 100%;
+
+    color: #ff9201;
+    background-color: #252D5E;
+    padding: 10px;
+
+    border-radius: 12px;
+}
+
+.filter-general {
+    background-color: #c7c6c6;
+
+    padding: 10px;
+    margin-top: 30px;
+}

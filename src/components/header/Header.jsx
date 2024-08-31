@@ -3,7 +3,6 @@ import './header.css'
 
 export const Header = () => {
     return (
-        <>
             <div className='header-container'>
                 <div className='menu-hamburger'>Menu</div>
                 <div className='profile-container'>
@@ -11,6 +10,5 @@ export const Header = () => {
                     <div className='profile'>Profile</div>
                 </div>
             </div>
-        </>
     )
 }

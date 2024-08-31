@@ -1,0 +1,58 @@
+.nav-container {
+    width: 15%;
+
+    background-color: #252D5E;
+    border-radius: 20px 0px 0px 20px;
+
+    padding: 20px;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 30px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu ul {
+    width: 130%;
+
+    margin: 0;
+    padding: 0;
+
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    text-align: left;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.menu ul li a:hover {
+    background-color: #ff9201;
+}
+
+.log-out {
+    margin-top: 150px;
+}
