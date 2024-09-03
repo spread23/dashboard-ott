@@ -1,20 +1,129 @@
 .container-general {
     width: 100%;
+
+    margin-top: 8px;
 }
 
 .title-general {
     width: 100%;
 
-    color: #ff9201;
-    background-color: #252D5E;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    color: rgb(247, 206, 91);
+    background-color: rgb(11, 19, 43);
     padding: 10px;
 
     border-radius: 12px;
 }
 
 .filter-general {
-    background-color: #c7c6c6;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    background-color: rgb(234, 234, 234);
 
     padding: 10px;
     margin-top: 30px;
+}
+
+.title-container-data {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    padding: 10px;
+    margin-top: 20px;
+
+    background-color: rgb(11, 19, 43);
+    color: rgb(247, 206, 91);
+
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.data-user {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    padding: 10px;
+    margin-top: 10px;
+
+    color: #7f7f7fff;
+}
+
+.data-user:hover {
+    background-color: #7f7f7fff;
+    color: white;
+    cursor: pointer;
+}
+
+.cell {
+    flex: 1;
+    
+    margin-left: 50px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.search {
+    width: 300px;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.search:focus {
+    border: 1px solid rgb(247, 206, 91);
+}
+
+.icon-search {
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.icon-search:hover {
+    color: white;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.title-select {
+    margin-right: 10px;
+}
+
+@media (max-width: 915px) {
+    .search {
+        width: 180px;
+    }
 }

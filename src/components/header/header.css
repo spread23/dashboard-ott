@@ -1,18 +1,52 @@
 .header-container {
+    position: sticky;
+    top: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
 
-    margin-top: 30px;
+    background-color: white;
+
+    margin-top: 60px;
+    padding-top: 20px;
+
+    border-bottom: 1px solid rgb(247, 206, 91);
+    border-top: 1px solid rgb(247, 206, 91);
     
 }
 
 .profile-container {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: space-around;
     align-items: center;
     align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.menu-hamburger {
+    display: none;
+}
+
+.icons-header {
+    font-size: 40px;
+    color: rgb(11, 19, 43);
+    margin-right: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.icons-header:hover {
+    color: rgb(247, 206, 91);
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

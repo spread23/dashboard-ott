@@ -1,7 +1,8 @@
 .nav-container {
     width: 15%;
+    height: 800px;
 
-    background-color: #252D5E;
+    background-color: rgb(11, 19, 43);
     border-radius: 20px 0px 0px 20px;
 
     padding: 20px;
@@ -17,6 +18,8 @@
 .logo {
     width: 80px;
     margin-bottom: 30px;
+
+    cursor: pointer;
 }
 
 .menu {
@@ -41,18 +44,38 @@
 }
 
 .menu ul li a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
     text-decoration: none;
     color: white;
     text-align: left;
 
-    padding: 20px;
+    padding: 12px;
+    margin-bottom: 20px;
     border-radius: 10px;
+
+    transition: all 0.3s;
 }
 
 .menu ul li a:hover {
-    background-color: #ff9201;
+    background-color: rgb(247, 206, 91);
+    color: black;
+}
+
+.menu ul li a.active {
+    background-color: rgb(247, 206, 91);
+    color: black;
 }
 
 .log-out {
-    margin-top: 150px;
+    margin-top: 270px;
+}
+
+.icons-menu {
+    color: white;
+    margin-right: 10px;
+    font-size: 18px;
 }
