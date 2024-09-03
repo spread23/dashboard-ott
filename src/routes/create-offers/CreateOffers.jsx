@@ -2,6 +2,11 @@ import React from 'react'
 import './createOffers.css'
 
 export const CreateOffers = () => {
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+    }
+
     return (
         <div className='create-offer-container'>
             <h1>Crea una nueva vacante</h1>
@@ -75,7 +80,7 @@ export const CreateOffers = () => {
                             </div>
                         </fieldset>
                     </div>
-                    <button className='btn-update'>Crear vacante</button>
+                    <button onClick={handleSubmit} className='btn-update'>Crear vacante</button>
                 </form>
             </div>
         </div>
