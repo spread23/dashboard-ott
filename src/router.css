@@ -91,4 +91,8 @@ body {
     .show-page-container {
         width: 100%;
     }
+
+    .page-container {
+        width: 100%;
+    }
 }
