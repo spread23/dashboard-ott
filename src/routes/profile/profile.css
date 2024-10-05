@@ -35,7 +35,7 @@
 }
 
 .form-group input, textarea {
-    width: 300px;
+    width: 90%;
     padding: 10px;
     border-radius: 10px;
     border: none;
@@ -121,6 +121,12 @@
 
 @media (max-width: 1170px) {
     .form-group input, textarea {
-        width: 200px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 650px) {
+    .form-group input, textarea {
+        width: 90%;
     }
 }

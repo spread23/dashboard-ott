@@ -43,6 +43,10 @@
 
 }
 
+.log-out {
+    margin-top: 270px;
+}
+
 .menu ul li a {
     display: flex;
     flex-direction: row;
@@ -70,12 +74,14 @@
     color: black;
 }
 
-.log-out {
-    margin-top: 270px;
-}
-
 .icons-menu {
     color: white;
     margin-right: 10px;
     font-size: 18px;
+}
+
+@media (max-width: 750px) {
+    .nav-container {
+        display: none;
+    }
 }

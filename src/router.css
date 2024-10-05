@@ -23,7 +23,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 
     box-sizing: border-box;
 
@@ -82,4 +81,14 @@ body {
 
 .icon-profile {
     margin-right: 10px;
+}
+
+@media (max-width: 750px) {
+    .profile-section {
+        display: none;
+    }
+
+    .show-page-container {
+        width: 100%;
+    }
 }
