@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes, Navigate, Outlet } from 'react-router-dom'
 
 import { FaPen } from 'react-icons/fa'
@@ -15,12 +15,15 @@ import { Header } from './components/header/Header'
 import './router.css'
 
 export const Router = ({ setLoged }) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
             <div className='page-container'>
-                <Navbar setLoged={setLoged}></Navbar>
+                <Navbar setLoged={setLoged} setIsOpen={setIsOpen} isOpen={isOpen}></Navbar>
                 <div className='show-page-container'>
-                    <Header></Header>
+                    <Header setIsOpen={setIsOpen} isOpen={isOpen}></Header>
 
                     <Routes>
                         <Route path='/' element={<General />}></Route>

@@ -22,6 +22,10 @@
     cursor: pointer;
 }
 
+.log-out {
+    margin-top: 100px;
+}
+
 .menu {
     display: flex;
     flex-direction: column;
@@ -43,9 +47,7 @@
 
 }
 
-.log-out {
-    margin-top: 270px;
-}
+
 
 .menu ul li a {
     display: flex;
