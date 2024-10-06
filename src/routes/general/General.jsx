@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './general.css'
 
 import { FaSearch } from 'react-icons/fa'
+import logo from '../../assets/logo_solo.svg'
 
 export const General = () => {
+
+    const dialogRef = useRef(null)
+
+    const showPopup = () => {
+        dialogRef.current.showModal()
+        document.body.classList.add('blur');
+    }
+
+    const closePopup = () => {
+        dialogRef.current.close()
+        document.body.classList.remove('blur');
+    }
+
     return (
         <div className='container-general'>
             <div className='title-general'>
@@ -64,7 +78,7 @@ export const General = () => {
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
                 <div className='cards-candidate-container'>
-                    <div className='card-candidate'>
+                    <div onClick={() => showPopup()} className='card-candidate'>
                         <h3>Nombre candidato:</h3>
                         <h4>Esteban Rojas</h4>
                         <div className='description-candidate'>
@@ -75,7 +89,7 @@ export const General = () => {
                         </div>
                     </div>
 
-                    <div className='card-candidate'>
+                    <div onClick={() => showPopup()} className='card-candidate'>
                         <h3>Nombre candidato:</h3>
                         <h4>Esteban Rojas</h4>
                         <div className='description-candidate'>
@@ -86,7 +100,7 @@ export const General = () => {
                         </div>
                     </div>
 
-                    <div className='card-candidate'>
+                    <div onClick={() => showPopup()} className='card-candidate'>
                         <h3>Nombre candidato:</h3>
                         <h4>Esteban Rojas</h4>
                         <div className='description-candidate'>
@@ -99,6 +113,34 @@ export const General = () => {
 
                 </div>
             </div>
+
+            <dialog ref={dialogRef}>
+                <p onClick={closePopup} className='close'>X</p>
+                <div className='main-popup'>    
+                    <div className='title-profile'>
+                        <img className='logo-popup' src={ logo } alt="logo" />
+                        <h3>Perfil Esteban Rojas</h3>
+                    </div>
+                    <div className='description-popup'>
+                        <div className='talents-popup'>
+                            <h4 className='title-description-popup'>Talentos: </h4>
+                            <h6>Copywriting</h6>
+                            <h6>Manejo de redes</h6>
+                            <h6>Finanzas</h6>
+                        </div>
+
+                        <div className='talents-popup'>
+                            <h4 className='title-description-popup'>Años de experiencia: </h4>
+                            <h6>5 años</h6>
+                        </div>
+
+                        <div className='talents-popup'>
+                            <h4 className='title-description-popup'>Disponibilidad: </h4>
+                            <h6>Remoto</h6>
+                        </div>
+                    </div>
+                </div> 
+            </dialog>
         </div>
     )
 }
