@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
 
 import './navbar.css'
 import logo from '../../assets/logo_solo.svg'
@@ -13,7 +13,6 @@ import { FaLockOpen } from 'react-icons/fa'
 
 export const Navbar = ({ setLoged, setIsOpen, isOpen }) => {
     const handleOnClickLoged = (event) => {
-        event.preventDefault()
 
         setLoged('')
     }
@@ -31,7 +30,7 @@ export const Navbar = ({ setLoged, setIsOpen, isOpen }) => {
                             <NavLink onClick={() => setIsOpen(!isOpen)} to='/offers'><FaUserTie className='icons-menu'></FaUserTie>Vacantes</NavLink>
                             <NavLink onClick={() => setIsOpen(!isOpen)} to='/create-offers'><FaUserCheck className='icons-menu'></FaUserCheck>Crear vacante</NavLink>
                             <NavLink onClick={() => setIsOpen(!isOpen)} to='/bot'><FaRobot className='icons-menu'></FaRobot>bot</NavLink>
-                            <NavLink className='log-out' onClick={handleOnClickLoged} to='/'><FaLockOpen className='icons-menu'></FaLockOpen>Cerrar Sesion</NavLink>
+                            <NavLink className='log-out' onClick={handleOnClickLoged} to='/login'><FaLockOpen className='icons-menu'></FaLockOpen>Cerrar Sesion</NavLink>
                         </li>
                     </ul>
                 </div>

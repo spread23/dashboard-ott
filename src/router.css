@@ -83,6 +83,29 @@ body {
     margin-right: 10px;
 }
 
+.log-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+
+.btn-register {
+    width: 200px;
+    text-decoration: none;
+}
+
+.navigate-register-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 @media (max-width: 750px) {
     .profile-section {
         display: none;
