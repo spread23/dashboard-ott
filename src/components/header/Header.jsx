@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import './header.css'
+import logo from '../../assets/logo_solo.svg'
 
 import { FaHeart } from 'react-icons/fa'
 import { FaBell } from 'react-icons/fa'
@@ -47,6 +48,7 @@ export const Header = ({ setIsOpen, isOpen }) => {
             <dialog ref={dialogRef}>
                 <p onClick={closePopupOne} className='close'>X</p>
                 <div className='main-popup'>    
+                    <img className='logo-popup' src={ logo } alt="logo" />
                     <h3 className='title-popup'>Estos son tus usuarios favoritos</h3>
                     <h6 className='description-popup'>
                         Lista de usuarios
@@ -58,6 +60,7 @@ export const Header = ({ setIsOpen, isOpen }) => {
             <dialog ref={dialogRefTwo}>
                 <p onClick={closePopupTwo} className='close'>X</p>
                 <div className='main-popup'>    
+                    <img className='logo-popup' src={ logo } alt="logo" />
                     <h3 className='title-popup'>Estas son tus notificaciones</h3>
                     <h6 className='description-popup'>
                         Tienes 10 usuarios que han postuladoa tus ofertas
@@ -68,7 +71,8 @@ export const Header = ({ setIsOpen, isOpen }) => {
 
             <dialog ref={dialogRefThree}>
                 <p onClick={closePopupThree} className='close'>X</p>
-                <div className='main-popup'>    
+                <div className='main-popup'>
+                    <img className='logo-popup' src={ logo } alt="logo" />    
                     <h3 className='title-popup'>Esta es la información de tu perfil</h3>
                     <h6 className='description-popup'>
                         <h4>Nombre: Juan Pablo</h4>

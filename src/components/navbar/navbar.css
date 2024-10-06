@@ -15,6 +15,10 @@
     align-items: center;
 }
 
+.title-popup {
+    color:rgb(247, 206, 91);
+}
+
 .logo {
     width: 80px;
     margin-bottom: 30px;
