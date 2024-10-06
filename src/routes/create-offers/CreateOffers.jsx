@@ -33,6 +33,21 @@ export const CreateOffers = () => {
                     </div>
 
                     <div className='form-group'>
+                        <label htmlFor="country">País</label>
+                        <input type="text" name="country" />
+                    </div>
+
+                    <div className='form-group'>
+                        <label htmlFor="city">Distrito</label>
+                        <input type="text" name="city" />
+                    </div>
+
+                    <div className='form-group'>
+                        <label htmlFor="region">Corregimiento</label>
+                        <input type="text" name="region" />
+                    </div>
+
+                    <div className='form-group'>
                         <label htmlFor="availability">Disponibilidad requerida</label>
 
                         <select className='input-select' name="availability">
@@ -46,12 +61,12 @@ export const CreateOffers = () => {
                         <label htmlFor="availability">Salario en dolares</label>
 
                         <select className='input-select' name="salary">
-                            <option value="remoto">$200-$500</option>
-                            <option value="presencial">$600-$1000</option>
-                            <option value="hibrido">$1100-$1500</option>
-                            <option value="hibrido">$1600-$2000</option>
-                            <option value="hibrido">$2000-$3000</option>
-                            <option value="hibrido">Más de $3500</option>
+                            <option value="200-500">$200-$500</option>
+                            <option value="600-1000">$600-$1000</option>
+                            <option value="1100-1500">$1100-$1500</option>
+                            <option value="1600-2000">$1600-$2000</option>
+                            <option value="2000-3000">$2000-$3000</option>
+                            <option value="3500">Más de $3500</option>
                         </select>
                     </div>
 

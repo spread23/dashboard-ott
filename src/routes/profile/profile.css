@@ -10,6 +10,7 @@
 }
 
 .form-profile-container {
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
