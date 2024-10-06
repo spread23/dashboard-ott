@@ -3,6 +3,7 @@ import './general.css'
 
 import { FaSearch } from 'react-icons/fa'
 import logo from '../../assets/logo_solo.svg'
+import { FaHeart } from 'react-icons/fa'
 
 export const General = () => {
 
@@ -115,11 +116,12 @@ export const General = () => {
             </div>
 
             <dialog ref={dialogRef}>
-                <p onClick={closePopup} className='close'>X</p>
-                <div className='main-popup'>    
+                <div onClick={closePopup} className='close'>X</div>
+                <div className='main-popup'>
                     <div className='title-profile'>
-                        <img className='logo-popup' src={ logo } alt="logo" />
+                        <img className='logo-popup' src={logo} alt="logo" />
                         <h3>Perfil Esteban Rojas</h3>
+                        <button className='btn-fav'><FaHeart className='icon-fav'></FaHeart>Añadir a favoritos</button>
                     </div>
                     <div className='description-popup'>
                         <div className='talents-popup'>
@@ -139,7 +141,9 @@ export const General = () => {
                             <h6>Remoto</h6>
                         </div>
                     </div>
-                </div> 
+                    <button className='btn-login'>Ver CV</button>
+                    <button className='btn-login'>Ver video</button>
+                </div>
             </dialog>
         </div>
     )

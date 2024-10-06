@@ -5,6 +5,10 @@ import logo from './assets/logo_full_solo_blanco.svg'
 
 export const Register = () => {
 
+    const handleClick = (event) => {
+        event.preventDefault()
+    }
+
     return (
         <>
             <div className='login-container'>
@@ -37,7 +41,7 @@ export const Register = () => {
                                 <input type="password" name="password" placeholder='Ingresa tu contraseña' />
                             </div>
 
-                            <button className='btn-login'>Login</button>
+                            <button onClick={handleClick} className='btn-login'>Regístrate</button>
                         </form>
                     </div>
                 </div>

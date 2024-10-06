@@ -14,22 +14,18 @@ export const Header = ({ setIsOpen, isOpen }) => {
 
     const showPopup = (dialog) => {
         dialog.current.showModal()
-        document.body.classList.add('blur');
     }
 
     const closePopupOne = () => {
         dialogRef.current.close()
-        document.body.classList.remove('blur');
     }
 
     const closePopupTwo = () => {
         dialogRefTwo.current.close()
-        document.body.classList.remove('blur');
     }
 
     const closePopupThree = () => {
         dialogRefThree.current.close()
-        document.body.classList.remove('blur');
     }
 
     return (
@@ -70,7 +66,7 @@ export const Header = ({ setIsOpen, isOpen }) => {
             </dialog>
 
             <dialog ref={dialogRefThree}>
-                <p onClick={closePopupThree} className='close'>X</p>
+                <div onClick={closePopupThree} className='close'>X</div>
                 <div className='main-popup'>
                     <img className='logo-popup' src={ logo } alt="logo" />    
                     <h3 className='title-popup'>Esta es la información de tu perfil</h3>
