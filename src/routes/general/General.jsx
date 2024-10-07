@@ -1,11 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import './general.css'
 
 import { FaSearch } from 'react-icons/fa'
 import logo from '../../assets/logo_solo.svg'
 import { FaHeart } from 'react-icons/fa'
 
-export const General = () => {
+export const General = ({ token }) => {
+
+    const [listUsers, setListUsers] = useState([])
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    const getUsers = async () => {
+        const response = await fetch('https://dashboard-ofrecetutalento.com:3100/api/user/get-users', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': token
+            }
+        })
+
+        const data = await response.json()
+
+        if (data.status == 'success') {
+            setListUsers(data.users)
+        }
+
+    }
 
     const dialogRef = useRef(null)
 
@@ -78,41 +101,25 @@ export const General = () => {
             </div>
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
-                <div className='cards-candidate-container'>
-                    <div onClick={() => showPopup()} className='card-candidate'>
+                {listUsers && listUsers.length >= 1 ? 
+                    listUsers.map((user) => {
+                        return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup()} className='card-candidate'>
                         <h3>Nombre candidato:</h3>
-                        <h4>Esteban Rojas</h4>
+                        <h4>{user.name}</h4>
                         <div className='description-candidate'>
                             <h3>Talentos:</h3>
-                            <h4>5</h4>
+                            <h4>{user.talents}</h4>
                             <h4 className='description-candidate-card'>Experiencia:</h4>
-                            <h4>4 años</h4>
+                            <h4>{user.experience}</h4>
                         </div>
-                    </div>
+                    </div></div>
 
-                    <div onClick={() => showPopup()} className='card-candidate'>
-                        <h3>Nombre candidato:</h3>
-                        <h4>Esteban Rojas</h4>
-                        <div className='description-candidate'>
-                            <h3>Talentos:</h3>
-                            <h4>5</h4>
-                            <h4 className='description-candidate-card'>Experiencia:</h4>
-                            <h4>4 años</h4>
-                        </div>
+                    }) :
+                    
+                    <div>
+                        <h2>Aun no hay postulantes para mostrar</h2>
                     </div>
-
-                    <div onClick={() => showPopup()} className='card-candidate'>
-                        <h3>Nombre candidato:</h3>
-                        <h4>Esteban Rojas</h4>
-                        <div className='description-candidate'>
-                            <h3>Talentos:</h3>
-                            <h4>5</h4>
-                            <h4 className='description-candidate-card'>Experiencia:</h4>
-                            <h4>4 años</h4>
-                        </div>
-                    </div>
-
-                </div>
+                }
             </div>
 
             <dialog ref={dialogRef}>

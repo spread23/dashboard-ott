@@ -7,6 +7,8 @@ import { Register } from './Register'
 
 export const App = () => {
     const [loged, setLoged] = useState('')
+    const [user, setUser] = useState(null)
+    const [token, setToken] = useState('')
     return (
         <div className='total-page'>
             {loged !== 'loged' ?
@@ -19,14 +21,14 @@ export const App = () => {
                         </div>
                         <Routes>
                             <Route path='/' element={<Login setLoged={setLoged}></Login>}></Route>
-                            <Route path='/login' element={<Login setLoged={setLoged}></Login>}></Route>
+                            <Route path='/login' element={<Login setLoged={setLoged} setUser={setUser} setToken={setToken}></Login>}></Route>
                             <Route path='/register' element={<Register />}></Route>
                         </Routes>
                     </div>
                 </>
                 :
 
-                <Router setLoged={setLoged}></Router>
+                <Router setLoged={setLoged} user={user} token={token}></Router>
 
 
             }

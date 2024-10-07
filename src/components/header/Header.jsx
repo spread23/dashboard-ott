@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 import { FaBell } from 'react-icons/fa'
 import { FaUserCircle } from 'react-icons/fa'
 
-export const Header = ({ setIsOpen, isOpen }) => {
+export const Header = ({ setIsOpen, isOpen, user, token }) => {
 
     const dialogRef = useRef(null)
     const dialogRefTwo = useRef(null)
@@ -37,7 +37,7 @@ export const Header = ({ setIsOpen, isOpen }) => {
                 <div className='profile-container'>
                     <div onClick={() => showPopup(dialogRef)} className='notifications'><FaHeart className='icons-header'></FaHeart></div>
                     <div onClick={() => showPopup(dialogRefTwo)} className='notifications'><FaBell className='icons-header'></FaBell></div>
-                    <div onClick={() => showPopup(dialogRefThree)} className='profile'><FaUserCircle className='icons-header'></FaUserCircle>JPEskildsen</div>
+                    <div onClick={() => showPopup(dialogRefThree)} className='profile'><FaUserCircle className='icons-header'></FaUserCircle>{user.user}</div>
                 </div>
             </div>
 
@@ -70,12 +70,12 @@ export const Header = ({ setIsOpen, isOpen }) => {
                 <div className='main-popup'>
                     <img className='logo-popup' src={ logo } alt="logo" />    
                     <h3 className='title-popup'>Esta es la información de tu perfil</h3>
-                    <h6 className='description-popup'>
-                        <h4>Nombre: Juan Pablo</h4>
-                        <h4>Apellido: Skildsen</h4>
-                        <h4>User: JPSkldsen</h4>
-                        <h4>Email: jpskildsen@gmail.com</h4>
-                    </h6>
+                    <div className='description-popup'>
+                        <h4>Nombre: {user.name}</h4>
+                        <h4>Apellido: {user.lastname}</h4>
+                        <h4>User: {user.user}</h4>
+                        <h4>Email: {user.email}</h4>
+                    </div>
                 </div> 
             </dialog>
         </>

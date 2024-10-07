@@ -14,7 +14,7 @@ import { Header } from './components/header/Header'
 
 import './router.css'
 
-export const Router = ({ setLoged }) => {
+export const Router = ({ setLoged, user, token }) => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -23,11 +23,11 @@ export const Router = ({ setLoged }) => {
             <div className='page-container'>
                 <Navbar setLoged={setLoged} setIsOpen={setIsOpen} isOpen={isOpen}></Navbar>
                 <div className='show-page-container'>
-                    <Header setIsOpen={setIsOpen} isOpen={isOpen}></Header>
+                    <Header setIsOpen={setIsOpen} isOpen={isOpen} user={user} token={token}></Header>
 
                     <Routes>
                         <Route path='/' element={<General />}></Route>
-                        <Route path='/general' element={<General />}></Route>
+                        <Route path='/general' element={<General token={token} />}></Route>
 
                         <Route path='/create-offers' element={<CreateOffers />}></Route>
                         <Route path='/offers' element={<Offers />}></Route>
