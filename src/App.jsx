@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, Routes, NavLink } from 'react-router-dom'
+import { Route, Routes, NavLink, Navigate } from 'react-router-dom'
 
 import { Router } from './Router'
 import { Login } from './Login'
@@ -20,7 +20,8 @@ export const App = () => {
                             <NavLink to='/register' className='btn-update btn-register'>Regístrate</NavLink>
                         </div>
                         <Routes>
-                            <Route path='/' element={<Login setLoged={setLoged}></Login>}></Route>
+                            <Route path='/*' element={<Navigate to='/' />}></Route>
+                            <Route path='/' element={<Login setLoged={setLoged} setUser={setUser} setToken={setToken}></Login>}></Route>
                             <Route path='/login' element={<Login setLoged={setLoged} setUser={setUser} setToken={setToken}></Login>}></Route>
                             <Route path='/register' element={<Register />}></Route>
                         </Routes>

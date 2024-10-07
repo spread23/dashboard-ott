@@ -26,11 +26,11 @@ export const Router = ({ setLoged, user, token }) => {
                     <Header setIsOpen={setIsOpen} isOpen={isOpen} user={user} token={token}></Header>
 
                     <Routes>
-                        <Route path='/' element={<General />}></Route>
+                        <Route path='/' element={<General token={token} />}></Route>
                         <Route path='/general' element={<General token={token} />}></Route>
 
-                        <Route path='/create-offers' element={<CreateOffers />}></Route>
-                        <Route path='/offers' element={<Offers />}></Route>
+                        <Route path='/create-offers' element={<CreateOffers user={user} token={token} />}></Route>
+                        <Route path='/offers' element={<Offers user={user} token={token} />}></Route>
 
                         <Route path='/profile' element={<Profile />}></Route>
 

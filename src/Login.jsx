@@ -18,8 +18,8 @@ export const Login = ( { setLoged, setUser, setToken } ) => {
         const data = await response.json()
         if (data.status == 'success') {
             setLoged('loged')
-            setUser(data.recruiter)
             setToken(data.token)
+            setUser(data.recruiter)
         } else {
             alert(data.message)
         }

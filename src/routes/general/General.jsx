@@ -8,6 +8,12 @@ import { FaHeart } from 'react-icons/fa'
 export const General = ({ token }) => {
 
     const [listUsers, setListUsers] = useState([])
+    const [user, setUser] = useState({
+        name: '',
+        talents: '',
+        experience: '',
+        availability: ''
+    })
 
     useEffect(() => {
         getUsers()
@@ -20,7 +26,7 @@ export const General = ({ token }) => {
                 'content-type': 'application/json',
                 'Authorization': token
             }
-        })
+        }) 
 
         const data = await response.json()
 
@@ -30,9 +36,27 @@ export const General = ({ token }) => {
 
     }
 
+    const getUser = async (id) => {
+        const response = await fetch(`https://dashboard-ofrecetutalento.com:3100/api/user/get-user/${id}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': token
+            }
+        })
+
+        const data = await response.json()
+
+        if (data.status == 'success') {
+            setUser(data.user)
+        }
+
+    }
+
     const dialogRef = useRef(null)
 
-    const showPopup = () => {
+    const showPopup = (id) => {
+        getUser(id)
         dialogRef.current.showModal()
         document.body.classList.add('blur');
     }
@@ -103,7 +127,7 @@ export const General = ({ token }) => {
                 <h1>Candidatos:</h1>
                 {listUsers && listUsers.length >= 1 ? 
                     listUsers.map((user) => {
-                        return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup()} className='card-candidate'>
+                        return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup(user._id)} className='card-candidate'>
                         <h3>Nombre candidato:</h3>
                         <h4>{user.name}</h4>
                         <div className='description-candidate'>
@@ -127,29 +151,28 @@ export const General = ({ token }) => {
                 <div className='main-popup'>
                     <div className='title-profile'>
                         <img className='logo-popup' src={logo} alt="logo" />
-                        <h3>Perfil Esteban Rojas</h3>
+                        <h3>Perfil {user.name}</h3>
                         <button className='btn-fav'><FaHeart className='icon-fav'></FaHeart>Añadir a favoritos</button>
                     </div>
                     <div className='description-popup'>
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Talentos: </h4>
-                            <h6>Copywriting</h6>
-                            <h6>Manejo de redes</h6>
-                            <h6>Finanzas</h6>
+                            <h6>{user.talents}</h6>
                         </div>
 
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Años de experiencia: </h4>
-                            <h6>5 años</h6>
+                            <h6>{user.experience}</h6>
                         </div>
 
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Disponibilidad: </h4>
-                            <h6>Remoto</h6>
+                            <h6>{user.availability}</h6>
                         </div>
                     </div>
                     <button className='btn-login'>Ver CV</button>
                     <button className='btn-login'>Ver video</button>
+                    <button className='btn-login'>Agendar entrevista</button>
                 </div>
             </dialog>
         </div>

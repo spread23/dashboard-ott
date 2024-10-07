@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 import { FaBell } from 'react-icons/fa'
 import { FaUserCircle } from 'react-icons/fa'
 
-export const Header = ({ setIsOpen, isOpen, user, token }) => {
+export const Header = ({ setIsOpen, isOpen, user={user:''}, token }) => {
 
     const dialogRef = useRef(null)
     const dialogRefTwo = useRef(null)

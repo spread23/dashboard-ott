@@ -35,4 +35,13 @@
 
 .fieldset {
     border: 1px solid rgb(247, 206, 91);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.fieldset div {
+    margin-top: 20px;
 }
