@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'  
+
 import './offers.css'
 
 import { FaCity } from 'react-icons/fa'
@@ -6,12 +8,15 @@ import logo from '../../assets/logo_solo.svg'
 
 export const Offers = ({ user, token }) => {
 
+    const navigate = useNavigate()
+
     const [listOffers, setListOffers] = useState([])
     const [offer, setOffer] = useState({
         title: '',
         description: '',
         area: '',
-        availability: ''
+        availability: '',
+        _id: ''
     })
 
     useEffect(() => {
@@ -56,6 +61,29 @@ export const Offers = ({ user, token }) => {
 
     }
 
+    const handleDelete = async (id) => {
+        const result = confirm('Estas seguro de querer eliminar la vacante?')
+
+        if (result) {
+            const response = await fetch(`https://dashboard-ofrecetutalento.com:3100/api/offer/delete-offer/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization': token
+                }
+            })
+            const data = await response.json()
+
+            if (data.status == 'success') {
+                alert('Has eliminado la vacante de manera satisfactoria')
+                closePopup()
+                navigate('/create-offers')
+            } else {
+                console.log(data)
+            }
+        }
+    }
+
     const dialogRef = useRef(null)
 
     const showPopup = (id) => {
@@ -73,7 +101,7 @@ export const Offers = ({ user, token }) => {
         <div className='offers-container'>
             <h1>Vacantes</h1>
             <div className='offers-container'>
-                <h1>Candidatos:</h1>
+                <h1>Vacantes:</h1>
                 {listOffers && listOffers.length >= 1 ?
                     listOffers.map((offer) => {
                         return <div key={offer._id} className='cards-offers-container'><div onClick={() => showPopup(offer._id)} className='card-candidate'>
@@ -117,7 +145,7 @@ export const Offers = ({ user, token }) => {
                             <h6>Aun no se ha postulado ningun usuario a tu vacante</h6>
                         </div>
                     </div>
-                    <button className='btn-login'>Eliminar vacante</button>
+                    <button onClick={() => handleDelete(offer._id)} className='btn-login'>Eliminar vacante</button>
                     <button className='btn-login'>Editar vacante</button>
                 </div>
             </dialog>
