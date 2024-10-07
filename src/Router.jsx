@@ -42,8 +42,8 @@ export const Router = ({ setLoged, user, token }) => {
                 <div className='profile-section'>
                     <div className='card-profile'>
                         <h2>Tus vacantes</h2>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Tienes 3 vacantes creadas</h3></div>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>6 personas han postulado a tus vacantes</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Tienes 0 vacantes creadas</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>0 personas han postulado a tus vacantes</h3></div>
                     </div>
 
                     <div className='card-profile'>
@@ -54,8 +54,8 @@ export const Router = ({ setLoged, user, token }) => {
 
                     <div className='card-profile'>
                         <h2>Tus entrevistas</h2>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Has agendado 2 entrevistas</h3></div>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>2 personas estan esperando por una entrevista</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Has agendado 0 entrevistas</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>0 personas estan esperando por una entrevista</h3></div>
                     </div>
                 </div>
             </div>

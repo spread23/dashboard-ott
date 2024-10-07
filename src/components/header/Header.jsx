@@ -59,9 +59,9 @@ export const Header = ({ setIsOpen, isOpen, user={user:''}, token }) => {
                     <img className='logo-popup' src={ logo } alt="logo" />
                     <h3 className='title-popup'>Estas son tus notificaciones</h3>
                     <h6 className='description-popup'>
-                        Tienes 10 usuarios que han postuladoa tus ofertas
+                        Tienes 0 usuarios que han postuladoa tus vacantes
                     </h6>
-                    <h6>Ningun usuaio ha postulado a tus ofertas aún</h6>
+                    <h6>Ningun usuario ha postulado a tus vacantes aún</h6>
                 </div> 
             </dialog>
 

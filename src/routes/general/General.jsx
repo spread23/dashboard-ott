@@ -8,6 +8,7 @@ import { FaHeart } from 'react-icons/fa'
 export const General = ({ token }) => {
 
     const [listUsers, setListUsers] = useState([])
+    const [urlCv, setUrlCv] = useState('')
     const [user, setUser] = useState({
         name: '',
         talents: '',
@@ -26,7 +27,7 @@ export const General = ({ token }) => {
                 'content-type': 'application/json',
                 'Authorization': token
             }
-        }) 
+        })
 
         const data = await response.json()
 
@@ -49,8 +50,30 @@ export const General = ({ token }) => {
 
         if (data.status == 'success') {
             setUser(data.user)
+            setUrlCv(`https://dashboard-ofrecetutalento.com:3100/api/user/get-pdf/${data.user.cv}`)
         }
 
+    }
+
+    const showCv = async () => {
+        try {
+            const response = await fetch(urlCv, {
+                method: 'GET',
+                headers: {
+                    'Authorization': token
+                }
+            });
+
+            if (response.ok) {
+                const blob = await response.blob()
+                const url = window.URL.createObjectURL(blob)
+                window.open(url, '_blank')
+            } else {
+                throw new Error('Error al obtener el PDF');
+            }
+        } catch (error) {
+            console.error('Error al abrir el PDF:', error);
+        }
     }
 
     const dialogRef = useRef(null)
@@ -125,21 +148,21 @@ export const General = ({ token }) => {
             </div>
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
-                {listUsers && listUsers.length >= 1 ? 
+                {listUsers && listUsers.length >= 1 ?
                     listUsers.map((user) => {
                         return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup(user._id)} className='card-candidate'>
-                        <h3>Nombre candidato:</h3>
-                        <h4>{user.name}</h4>
-                        <div className='description-candidate'>
-                            <h3>Talentos:</h3>
-                            <h4>{user.talents}</h4>
-                            <h4 className='description-candidate-card'>Experiencia:</h4>
-                            <h4>{user.experience}</h4>
-                        </div>
-                    </div></div>
+                            <h3>Nombre candidato:</h3>
+                            <h4>{user.name}</h4>
+                            <div className='description-candidate'>
+                                <h3>Talentos:</h3>
+                                <h4>{user.talents}</h4>
+                                <h4 className='description-candidate-card'>Experiencia:</h4>
+                                <h4>{user.experience}</h4>
+                            </div>
+                        </div></div>
 
                     }) :
-                    
+
                     <div>
                         <h2>Aun no hay postulantes para mostrar</h2>
                     </div>
@@ -170,7 +193,7 @@ export const General = ({ token }) => {
                             <h6>{user.availability}</h6>
                         </div>
                     </div>
-                    <button className='btn-login'>Ver CV</button>
+                    <button onClick={showCv} className='btn-login'>Ver CV</button>
                     <button className='btn-login'>Ver video</button>
                     <button className='btn-login'>Agendar entrevista</button>
                 </div>
