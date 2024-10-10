@@ -1,6 +1,6 @@
 .login-container {
-    width: 50%;
-    height: 800px;
+    width: 80%;
+    /*height: 800px;*/
 
     display: flex;
     flex-direction: column;
@@ -9,10 +9,11 @@
     text-align: center;
 
     background-color: white;
+    padding: 40px;
 }
 
 .form-login-container {
-    width: 50%;
+    width: 350px;
 
     display: flex;
     flex-direction: column;
@@ -28,13 +29,13 @@
 }
 
 .logo-full {
-    width: 400px;
+    width: 100%;
 
     margin-bottom: 50px;
 }
 
 .btn-login {
-    width: 300px;
+    width: 100%;
 
     background-color: rgb(247, 206, 91);
     color: rgb(11, 19, 43);
@@ -54,14 +55,30 @@
     background-color: white;
 }
 
-@media (max-width: 1430px) {
+@media (max-width: 750px) {
     .logo-full {
-        width: 280px;
+        width: 100%;
     }
 }
 
-@media (max-width: 1170px) {
-    .btn-login {
+@media (max-width: 620px) {
+    .form-login-container {
+        width: 250px;
+    }
+}
+
+@media (max-width: 390px) {
+    .form-login-container {
         width: 200px;
+    }
+}
+
+@media (max-width: 320px) {
+    .form-login-container {
+        width: 200px;
+    }
+
+    .login-container {
+        width: 98%;
     }
 }

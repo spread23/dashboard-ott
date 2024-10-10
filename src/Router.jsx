@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes, Navigate, Outlet } from 'react-router-dom'
 
 import { FaPen } from 'react-icons/fa'
@@ -14,20 +14,23 @@ import { Header } from './components/header/Header'
 
 import './router.css'
 
-export const Router = ({ setLoged }) => {
+export const Router = ({ setLoged, user, token }) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <>
             <div className='page-container'>
-                <Navbar setLoged={setLoged}></Navbar>
+                <Navbar setLoged={setLoged} setIsOpen={setIsOpen} isOpen={isOpen}></Navbar>
                 <div className='show-page-container'>
-                    <Header></Header>
+                    <Header setIsOpen={setIsOpen} isOpen={isOpen} user={user} token={token}></Header>
 
                     <Routes>
-                        <Route path='/' element={<General />}></Route>
-                        <Route path='/general' element={<General />}></Route>
+                        <Route path='/' element={<General token={token} />}></Route>
+                        <Route path='/general' element={<General token={token} />}></Route>
 
-                        <Route path='/create-offers' element={<CreateOffers />}></Route>
-                        <Route path='/offers' element={<Offers />}></Route>
+                        <Route path='/create-offers' element={<CreateOffers user={user} token={token} />}></Route>
+                        <Route path='/offers' element={<Offers user={user} token={token} />}></Route>
 
                         <Route path='/profile' element={<Profile />}></Route>
 
@@ -39,8 +42,8 @@ export const Router = ({ setLoged }) => {
                 <div className='profile-section'>
                     <div className='card-profile'>
                         <h2>Tus vacantes</h2>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Tienes 3 vacantes creadas</h3></div>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>6 personas han postulado a tus vacantes</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Tienes 0 vacantes creadas</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>0 personas han postulado a tus vacantes</h3></div>
                     </div>
 
                     <div className='card-profile'>
@@ -51,8 +54,8 @@ export const Router = ({ setLoged }) => {
 
                     <div className='card-profile'>
                         <h2>Tus entrevistas</h2>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Has agendado 2 entrevistas</h3></div>
-                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>2 personas estan esperando por una entrevista</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>Has agendado 0 entrevistas</h3></div>
+                        <div className='edit-profile'><FaPen className='icon-profile' /><h3>0 personas estan esperando por una entrevista</h3></div>
                     </div>
                 </div>
             </div>

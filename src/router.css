@@ -23,7 +23,6 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
 
     box-sizing: border-box;
 
@@ -82,4 +81,45 @@ body {
 
 .icon-profile {
     margin-right: 10px;
+}
+
+.log-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+}
+
+.btn-register {
+    width: 200px;
+    text-decoration: none;
+}
+
+.navigate-register-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 750px) {
+    .profile-section {
+        display: none;
+    }
+
+    .show-page-container {
+        width: 100%;
+    }
+
+    .page-container {
+        width: 100%;
+    }
+
+    body {
+        padding: 2px;
+    }
 }
