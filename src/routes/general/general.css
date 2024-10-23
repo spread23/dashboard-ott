@@ -242,7 +242,9 @@
 }
 
 .btn-filter {
-    width: 250px;
+    width: 150px;
+    margin-right: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     background-color: rgb(247, 206, 91);
     border: none;

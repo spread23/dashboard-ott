@@ -71,10 +71,10 @@ export const Header = ({ setIsOpen, isOpen, user={user:''}, token }) => {
                     <img className='logo-popup' src={ logo } alt="logo" />    
                     <h3 className='title-popup'>Esta es la información de tu perfil</h3>
                     <div className='description-popup'>
-                        <h4>Nombre: {user.name}</h4>
-                        <h4>Apellido: {user.lastname}</h4>
-                        <h4>User: {user.user}</h4>
-                        <h4>Email: {user.email}</h4>
+                        <h4>Nombre: <strong>{user.name}</strong></h4>
+                        <h4>Apellido: <strong>{user.lastname}</strong></h4>
+                        <h4>User: <strong>{user.user}</strong></h4>
+                        <h4>Email: <strong>{user.email}</strong></h4>
                     </div>
                 </div> 
             </dialog>

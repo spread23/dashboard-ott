@@ -97,6 +97,14 @@ dialog[open] {
     overflow-x: hidden;
 }
 
+.description-popup h4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 @media (max-width: 750px) {
 
     .menu-hamburger {

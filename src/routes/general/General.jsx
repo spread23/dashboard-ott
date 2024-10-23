@@ -17,6 +17,11 @@ export const General = ({ user, token }) => {
     })
 
     const [listOffers, setListOffers] = useState([])
+    const [filter, setFilter] = useState(false)
+    const [experience, setExperience] = useState('0')
+    const [talents, setTalents] = useState('')
+    const [languajes, setLanguajes] = useState('')
+    const [country, setCountry] = useState('')
 
     useEffect(() => {
         getUsers()
@@ -77,6 +82,35 @@ export const General = ({ user, token }) => {
 
     }
 
+    const addFilter = async (id) => {
+
+        const response = await fetch(`https://dashboard-ofrecetutalento.com:3100/api/offer/get-offer/${user._id}/${id}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': token
+            }
+        })
+
+        const data = await response.json()
+
+        if (data.status == 'success') {
+            // Convertir experiencia a número
+            const experienciaNum = parseInt(data.offer.experience);
+
+            // Convertir talentos e idiomas a arreglos
+            const talentosArray = data.offer.area.split(',').map(talento => talento.trim().toLowerCase());
+            const idiomasArray = data.offer.languajes.split(',').map(idioma => idioma.trim().toLowerCase());
+
+            setFilter(true)
+            setExperience(experienciaNum)
+            setLanguajes(idiomasArray)
+            setTalents(talentosArray)
+            setCountry(data.offer.country)
+        }
+
+    }
+
     const showCv = async () => {
         try {
             const response = await fetch(urlCv, {
@@ -121,6 +155,11 @@ export const General = ({ user, token }) => {
     const closePopupTwo = () => {
         dialogRefTwo.current.close()
         document.body.classList.remove('blur');
+    }
+
+    const setAllFilters = () => {
+        setFilter(false)
+        alert('Has deshecho los filtros')
     }
 
     return (
@@ -183,29 +222,66 @@ export const General = ({ user, token }) => {
             <div className='filter-ott-container'>
                 <div className='filter-ott'>
                     <button onClick={() => showPopupTwo()} className='btn-filter'>Filtro OTT</button>
+                    <button onClick={() => setAllFilters()} className='btn-filter'>Quitar filtros</button>
                 </div>
             </div>
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
-                {listUsers && listUsers.length >= 1 ?
-                    listUsers.map((user) => {
-                        return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup(user._id)} className='card-candidate'>
-                            <h3>Nombre candidato:</h3>
-                            <h4>{user.name}</h4>
-                            <div className='description-candidate'>
-                                <h3>Talentos:</h3>
-                                <h4>{user.talents}</h4>
-                                <h4 className='description-candidate-card'>Experiencia:</h4>
-                                <h4>{user.experience}</h4>
+                {!filter ?
+
+                    <>
+                        {listUsers && listUsers.length >= 1 ?
+                            listUsers.map((user) => {
+                                return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup(user._id)} className='card-candidate'>
+                                    <h3>Nombre candidato:</h3>
+                                    <h4>{user.name}</h4>
+                                    <div className='description-candidate'>
+                                        <h3>Talentos:</h3>
+                                        <h4>{user.talents}</h4>
+                                        <h4 className='description-candidate-card'>Experiencia:</h4>
+                                        <h4>{user.experience}</h4>
+                                    </div>
+                                </div>
+                                </div>
+
+                            }) :
+
+                            <div>
+                                <h2>Aun no hay postulantes para mostrar</h2>
                             </div>
-                        </div></div>
+                        }
+                    </>
 
-                    }) :
+                    :
 
-                    <div>
-                        <h2>Aun no hay postulantes para mostrar</h2>
-                    </div>
-                }
+                    <>
+                        {listUsers.filter((user) => {
+
+                            // Convertir experiencia a número
+                            const experienciaUserNum = parseInt(user.experience);
+
+                            // Convertir talentos e idiomas a arreglos
+                            const talentosUserArray = user.talents.split(',').map(talento => talento.trim().toLowerCase());
+                            const idiomasUserArray = user.languaje.split(',').map(idioma => idioma.trim().toLowerCase());
+
+                            return experienciaUserNum >= experience &&
+                                talentosUserArray.some(talento => talents.includes(talento)) &&
+                                idiomasUserArray.some(idioma => languajes.includes(idioma)) &&
+                                user.country.toLowerCase() === country.toLowerCase()
+                        }).map((user) => {
+                            return <div key={user._id} className='cards-candidate-container'><div onClick={() => showPopup(user._id)} className='card-candidate'>
+                                <h3>Nombre candidato:</h3>
+                                <h4>{user.name}</h4>
+                                <div className='description-candidate'>
+                                    <h3>Talentos:</h3>
+                                    <h4>{user.talents}</h4>
+                                    <h4 className='description-candidate-card'>Experiencia:</h4>
+                                    <h4>{user.experience}</h4>
+                                </div>
+                            </div>
+                            </div>
+                        })}
+                    </>}
             </div>
 
             <dialog ref={dialogRef}>
@@ -243,23 +319,23 @@ export const General = ({ user, token }) => {
                 <div className='main-popup'>
                     <div className='title-offers-general'>
                         <h2 className='title-general-offer'>Con que oferta quieres aplicar el filtro:</h2>
-                        {listOffers && listOffers.length >= 1 ? 
-                        
-                        <div  className='offers-container-general'>
-                            {listOffers.map((offer) => {
-                                return <div key={offer._id}>
+                        {listOffers && listOffers.length >= 1 ?
 
-                                    <button className='btn-offer-general'>{offer.title}</button>
+                            <div className='offers-container-general'>
+                                {listOffers.map((offer) => {
+                                    return <div key={offer._id}>
 
-                                </div>
-                            })}
-                        </div> 
-                        
-                        : 
-                        
-                        <div className='title-general-offer'>
-                            <h2>No has creado ofertas aún!!</h2>
-                        </div>}
+                                        <button onClick={() => { addFilter(offer._id) }} className='btn-offer-general'>{offer.title}</button>
+
+                                    </div>
+                                })}
+                            </div>
+
+                            :
+
+                            <div className='title-general-offer'>
+                                <h2>No has creado ofertas aún!!</h2>
+                            </div>}
                     </div>
                 </div>
             </dialog>
