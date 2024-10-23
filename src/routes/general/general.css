@@ -15,6 +15,7 @@
     color: rgb(247, 206, 91);
     background-color: rgb(11, 19, 43);
     padding: 10px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .filter-general {
@@ -29,6 +30,7 @@
 
     padding: 10px;
     margin-top: 30px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .title-container-data {
@@ -235,10 +237,11 @@
     padding: 20px;
     background-color: rgb(11, 19, 43);
     margin-top: 30px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn-filter {
-    width: 300px;
+    width: 250px;
     padding: 10px;
     background-color: rgb(247, 206, 91);
     border: none;

@@ -22,6 +22,7 @@
     margin: 10px;
 
     border-radius: 10px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .form-group {
@@ -58,13 +59,16 @@
 }
 
 .cards-update {
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 
     background-color: rgb(255, 252, 232);
     border-radius: 10px;
+
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 
     padding: 20px;
 }
@@ -92,6 +96,7 @@
 
     border: 1px solid rgb(11, 19, 43);
     border-radius: 10px;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.5);
 
     padding: 20px;
 }
