@@ -5,19 +5,22 @@ import { FaSearch } from 'react-icons/fa'
 import logo from '../../assets/logo_solo.svg'
 import { FaHeart } from 'react-icons/fa'
 
-export const General = ({ token }) => {
+export const General = ({ user, token }) => {
 
     const [listUsers, setListUsers] = useState([])
     const [urlCv, setUrlCv] = useState('')
-    const [user, setUser] = useState({
+    const [userData, setUser] = useState({
         name: '',
         talents: '',
         experience: '',
         availability: ''
     })
 
+    const [listOffers, setListOffers] = useState([])
+
     useEffect(() => {
         getUsers()
+        getOffers()
     }, [])
 
     const getUsers = async () => {
@@ -35,6 +38,25 @@ export const General = ({ token }) => {
             setListUsers(data.users)
         }
 
+    }
+
+    const getOffers = async () => {
+        const response = await fetch(`https://dashboard-ofrecetutalento.com:3100/api/offer/get-offers/${user._id}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': token
+            }
+        })
+
+        const data = await response.json()
+
+        if (data.status == 'success') {
+            setListOffers(data.offers)
+            console.log(data)
+        } else {
+            console.log(data)
+        }
     }
 
     const getUser = async (id) => {
@@ -77,6 +99,7 @@ export const General = ({ token }) => {
     }
 
     const dialogRef = useRef(null)
+    const dialogRefTwo = useRef(null)
 
     const showPopup = (id) => {
         getUser(id)
@@ -86,6 +109,17 @@ export const General = ({ token }) => {
 
     const closePopup = () => {
         dialogRef.current.close()
+        document.body.classList.remove('blur');
+    }
+
+    const showPopupTwo = () => {
+        dialogRefTwo.current.showModal()
+        document.body.classList.add('blur');
+        getOffers()
+    }
+
+    const closePopupTwo = () => {
+        dialogRefTwo.current.close()
         document.body.classList.remove('blur');
     }
 
@@ -147,10 +181,10 @@ export const General = ({ token }) => {
                 </div>
             </div>
             <div className='filter-ott-container'>
-                    <div className='filter-ott'>
-                        <button className='btn-filter'>Filtro OTT</button>
-                    </div>
+                <div className='filter-ott'>
+                    <button onClick={() => showPopupTwo()} className='btn-filter'>Filtro OTT</button>
                 </div>
+            </div>
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
                 {listUsers && listUsers.length >= 1 ?
@@ -179,28 +213,54 @@ export const General = ({ token }) => {
                 <div className='main-popup'>
                     <div className='title-profile'>
                         <img className='logo-popup' src={logo} alt="logo" />
-                        <h3>Perfil {user.name}</h3>
+                        <h3>Perfil {userData.name}</h3>
                         <button className='btn-fav'><FaHeart className='icon-fav'></FaHeart>Añadir a favoritos</button>
                     </div>
                     <div className='description-popup'>
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Talentos: </h4>
-                            <h6>{user.talents}</h6>
+                            <h6>{userData.talents}</h6>
                         </div>
 
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Años de experiencia: </h4>
-                            <h6>{user.experience}</h6>
+                            <h6>{userData.experience}</h6>
                         </div>
 
                         <div className='talents-popup'>
                             <h4 className='title-description-popup'>Disponibilidad: </h4>
-                            <h6>{user.availability}</h6>
+                            <h6>{userData.availability}</h6>
                         </div>
                     </div>
                     <button onClick={showCv} className='btn-login'>Ver CV</button>
                     <button className='btn-login'>Ver video</button>
                     <button className='btn-login'>Agendar entrevista</button>
+                </div>
+            </dialog>
+
+            <dialog ref={dialogRefTwo}>
+                <div onClick={closePopupTwo} className='close'>X</div>
+                <div className='main-popup'>
+                    <div className='title-offers-general'>
+                        <h2 className='title-general-offer'>Con que oferta quieres aplicar el filtro:</h2>
+                        {listOffers && listOffers.length >= 1 ? 
+                        
+                        <div  className='offers-container-general'>
+                            {listOffers.map((offer) => {
+                                return <div key={offer._id}>
+
+                                    <button className='btn-offer-general'>{offer.title}</button>
+
+                                </div>
+                            })}
+                        </div> 
+                        
+                        : 
+                        
+                        <div className='title-general-offer'>
+                            <h2>No has creado ofertas aún!!</h2>
+                        </div>}
+                    </div>
                 </div>
             </dialog>
         </div>
