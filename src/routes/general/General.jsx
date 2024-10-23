@@ -146,6 +146,11 @@ export const General = ({ token }) => {
                     </fieldset>
                 </div>
             </div>
+            <div className='filter-ott-container'>
+                    <div className='filter-ott'>
+                        <button className='btn-filter'>Filtro OTT</button>
+                    </div>
+                </div>
             <div className='candidate-container'>
                 <h1>Candidatos:</h1>
                 {listUsers && listUsers.length >= 1 ?
