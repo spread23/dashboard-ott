@@ -83,6 +83,14 @@
     background-color: rgb(11, 19, 43);
 }
 
+.description-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 dialog[open] {
     display: flex;
     height: auto;
