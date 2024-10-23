@@ -221,7 +221,7 @@ export const General = ({ user, token }) => {
             </div>
             <div className='filter-ott-container'>
                 <div className='filter-ott'>
-                    <button onClick={() => showPopupTwo()} className='btn-filter'>Filtro OTT</button>
+                    <button onClick={() => showPopupTwo()} className='btn-filter'>Pre-Filtro OTT</button>
                     <button onClick={() => setAllFilters()} className='btn-filter'>Quitar filtros</button>
                 </div>
             </div>
