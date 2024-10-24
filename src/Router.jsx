@@ -34,7 +34,7 @@ export const Router = ({ setLoged, user, token }) => {
 
                         <Route path='/profile' element={<Profile />}></Route>
 
-                        <Route path='/bot' element={<Bot />}></Route>
+                        <Route path='/bot' element={<Bot user={user} token={token}/>}></Route>
 
                         <Route path='/*' element={<Navigate to='/general' />}></Route>
                     </Routes>
