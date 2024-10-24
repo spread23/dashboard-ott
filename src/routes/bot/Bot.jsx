@@ -55,24 +55,20 @@ export const Bot = ({ user, token }) => {
     }
 
     const getFetch = async () => {
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        const params = new URLSearchParams()
 
         const users = listUsers.map((user) => {return {name: user.name, experience: user.experience, talents: user.talents, languajes: user.languaje}})
         const offers = listOffers.map((offer) =>{return {title: offer.title, description: offer.description, area: offer.area, experience: offer.experience, languajes: offer.languajes}})
 
-        const body = {
-            users,
-            offers
-        }
+        params.append('users', JSON.stringify(users))
+        params.append('offers', JSON.stringify(offers))
 
         const response = await fetch('https://minichatbot.com:4900/api/results/get-results', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json',
-                'Authorization': token
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: JSON.stringify(body)
+            body: params.toString()
         })
 
         const data = await response.json()
