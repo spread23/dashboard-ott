@@ -107,6 +107,7 @@ export const General = ({ user, token }) => {
             setLanguajes(idiomasArray)
             setTalents(talentosArray)
             setCountry(data.offer.country)
+            alert('Has aplicado el filtro de manera exitosa')
         }
 
     }
