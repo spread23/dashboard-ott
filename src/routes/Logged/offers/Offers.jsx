@@ -84,7 +84,8 @@ export const Offers = ({ user, token }) => {
       if (data.status == "success") {
         toast.success("Has eliminado la vacante de manera satisfactoria");
         closePopup();
-        navigate("/create-offers");
+        setListOffers([]);
+        await getOffers();
       } else {
         console.log(data);
       }
@@ -124,7 +125,13 @@ export const Offers = ({ user, token }) => {
       </div>
 
       {listOffers && listOffers.length ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div
+          className={`grid  ${
+            listOffers.length === 1
+              ? "grid-cols-1"
+              : "grid-cols-1 lg:grid-cols-2"
+          } gap-4`}
+        >
           {listOffers.map((offer) => (
             <div
               key={offer._id}

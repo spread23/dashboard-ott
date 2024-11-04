@@ -234,7 +234,11 @@ export const General = ({ user, token }) => {
         {usersList && usersList.length ? (
           <div
             key={user.id}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-4  "
+            className={`grid  ${
+              usersList.length === 1
+                ? "grid-cols-1"
+                : "grid-cols-1 lg:grid-cols-2"
+            } gap-4`}
           >
             {usersList.map((user) => (
               <div key={user.id}>

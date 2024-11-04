@@ -228,9 +228,6 @@ export const CreateOffers = ({ user, token }) => {
 
           <div className="pb-4">
             <fieldset>
-              <legend className="text-gray-700 font-semibold">
-                Idiomas requeridos:
-              </legend>
               <label
                 htmlFor="languajes"
                 className="block text-gray-700 font-semibold "
